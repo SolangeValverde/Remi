@@ -1,0 +1,63 @@
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick1"
+        android:alpha="0.0"
+        android:duration="1300"
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content" />
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick1"
+        android:duration="150"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick2"
+        android:duration="150"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick3"
+        android:duration="150"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick4"
+        android:duration="150"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick5"
+        android:duration="150"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" />
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick6"
+        android:duration="100"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+
+    <item
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:drawable="@drawable/lick1"
+        android:duration="150"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+</animation-list>

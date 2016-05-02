@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.solange.remi.MainActivity"
+    tools:showIn="@layout/activity_main"
+    android:background="@drawable/background">
+
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+
+
+        <ImageButton
+            android:id="@+id/btn_burger"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="70dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:tag="2" />
+
+        <ImageButton
+            android:id="@+id/btn_burger2"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="70dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:tag="2" />
+
+        <ImageButton
+            android:id="@+id/btn_burger3"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="70dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:tag="2" />
+
+        <ImageButton
+            android:id="@+id/btn_burger4"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="70dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:tag="2" />
+
+
+        <ImageButton
+            android:id="@+id/img_Remi"
+            android:layout_width="512px"
+            android:layout_height="512px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="90dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:tag="1" />
+
+        <ImageView
+            android:id="@+id/accessory"
+            android:layout_width="512px"
+            android:layout_height="512px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="90dp"
+            android:adjustViewBounds="true"
+            android:tag="1" />
+
+        <ImageView
+            android:id="@+id/animation"
+            android:layout_width="512px"
+            android:layout_height="512px"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="90dp"
+            android:adjustViewBounds="true"
+            android:tag="1" />
+        <!---Score-->
+        <Button
+            android:id="@+id/scoreButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="260dp"
+            android:layout_marginTop="450dp"
+            android:backgroundTint="#B1EA8C"
+            android:clickable="false" />
+        <!---MENU-->
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:background="@drawable/menubg"
+            android:visibility="invisible"
+
+            >
+
+            <ImageButton
+                android:id="@+id/menu_button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/nope"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="123dp"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/collar3"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="224dp"
+                android:layout_marginTop="45dp"
+                android:background="@drawable/collar4"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/collar2"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="123dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/collar1"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="224dp"
+                android:layout_marginTop="160dp"
+                android:background="@drawable/bandana4"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="270dp"
+                android:background="@drawable/bandana2"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="123dp"
+                android:layout_marginTop="270dp"
+                android:background="@drawable/bandana1"
+                android:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/menu_button9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="224dp"
+                android:layout_marginTop="270dp"
+                android:background="@drawable/bandana3"
+                android:visibility="invisible" />
+        </FrameLayout>
+    </FrameLayout>
+</RelativeLayout>
