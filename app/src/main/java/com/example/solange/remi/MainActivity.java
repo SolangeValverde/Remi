@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         menub2.setOnClickListener(this);
         menub3.setOnClickListener(this);
         menub4.setOnClickListener(this);
-        menub5.setOnClickListener(this);cvvsdsd
+        menub5.setOnasdfClickListener(this);
         menub6.setOnClickListener(this);
         menub7.setOnClickListener(this);
         menub8.setOnClickListener(this);
