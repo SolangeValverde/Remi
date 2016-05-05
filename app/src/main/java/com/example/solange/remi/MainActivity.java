@@ -208,7 +208,7 @@ public void menuOnOff(final boolean boolMenuOff){
         for (int i = 0; i < foods.size(); i++) {
             MainFood currFood = foods.get(i);
         if (rem.collision(currFood) == true) {
-
+//sd
         }}
     }
 
