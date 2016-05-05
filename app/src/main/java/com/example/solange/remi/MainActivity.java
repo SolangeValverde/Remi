@@ -209,6 +209,7 @@ public void menuOnOff(final boolean boolMenuOff){
             MainFood currFood = foods.get(i);
         if (rem.collision(currFood) == true) {
         }}
+//        asdfasdf
     }
 
     @Override
