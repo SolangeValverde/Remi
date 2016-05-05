@@ -85,12 +85,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         remi = new Remi(0, 0, 0, this);
         remisaccessory = new Accessory(0, 0, 0, this);
         setSupportActionBar(toolbar);
-        createFood();
-        drawFood();
-        score.drawScore();
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.woof);
         remi.draw();
         remisaccessory.draw();
+        createFood();
+        drawFood();
+        score.drawScore();
         remiButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
