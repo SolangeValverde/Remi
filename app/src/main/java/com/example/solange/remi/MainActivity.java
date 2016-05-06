@@ -6,13 +6,18 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,19 +27,24 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     Random r = new Random();
     int y = r.nextInt(20);
     int x = r.nextInt(20 - 10) + 10;
+    RelativeLayout.LayoutParams parms;
+    LinearLayout.LayoutParams par;
+    float dx=0,dy=0,x2=0,y2=0;
     int vel = r.nextInt(6);
     ArrayList<MainFood> foods = new ArrayList<>();
-    ImageView menubg, remiAccessory_imgView,animation;
+    ImageView menubg, remiAccessory_imgView,animation, brush, hand, shine;
     Drawable imageBurger, imagePizza, imageCookie;
     Accessory remisaccessory;
     Remi remi;
     boolean menuOff = true;
     boolean hit;
+    boolean options = true;
     AnimationDrawable frameAnimation;
     Button scoreButton;
     int intScore;
     Score score ;
     ImageButton food_button1,food_button2,food_button3, food_button4, remiButton,menub1, menub2, menub3, menub4, menub5, menub6, menub7,menub8, menub9;
+    ImageButton loveButton, feedButton, brushButton;
     FrameLayout menuFrame;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         });
 
 
-
         food_button1 = (ImageButton) findViewById(R.id.btn_burger);
         food_button2 = (ImageButton) findViewById(R.id.btn_burger2);
         food_button3 = (ImageButton) findViewById(R.id.btn_burger3);
@@ -74,6 +83,10 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         menub7 = (ImageButton) findViewById(R.id.menu_button7);
         menub8 = (ImageButton) findViewById(R.id.menu_button8);
         menub9 = (ImageButton) findViewById(R.id.menu_button9);
+        loveButton= (ImageButton) findViewById(R.id.loveButton);
+        feedButton= (ImageButton) findViewById(R.id.feedButton);
+        brushButton= (ImageButton) findViewById(R.id.brushButton);
+        brush=(ImageView) findViewById(R.id.brush);
         scoreButton = (Button)findViewById(R.id.scoreButton);
         score = new Score(intScore,this);
         remiButton = (ImageButton) findViewById(R.id.img_Remi);
@@ -85,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         remi = new Remi(0, 0, 0, this);
         remisaccessory = new Accessory(0, 0, 0, this);
         setSupportActionBar(toolbar);
-        createFood();
+
         drawFood();
         score.drawScore();
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.woof);
@@ -108,30 +121,30 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         menub8.setOnClickListener(this);
         menub9.setOnClickListener(this);
 
+        loveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                optionsOnOff();
+                loveStarts();
+            }
+        });
+        
+        feedButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                optionsOnOff();
+                foodStarts();
+            }
+        });brushButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                optionsOnOff();
+                brushStarts();
+            }
+        });
 
 
-        for (int i = 0; i<foods.size(); i++) {
-            final MainFood currFood = foods.get(i);
-            final int j = i;
-            currFood.move();
-            currFood.food_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    currFood.fall();
-                    hit = remi.collision(currFood);
-                    if (hit){
-                        score.updateScore(10);
-                        score.drawScore();
-                        currFood.removeFood(foods,j);
 
-                    }
-                    if (currFood.currYPos> 699){
-                        currFood.removeFood(foods,j);
-                    }
-                }
-            });
-
-        }
     }
 
     @Override
@@ -142,16 +155,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
     }
 public void menuOnOff(final boolean boolMenuOff){
     if (boolMenuOff){
-        menuFrame.setVisibility(View.INVISIBLE);
-        menub1.setVisibility(View.INVISIBLE);
-        menub2.setVisibility(View.INVISIBLE);
-        menub3.setVisibility(View.INVISIBLE);
-        menub4.setVisibility(View.INVISIBLE);
-        menub5.setVisibility(View.INVISIBLE);
-        menub6.setVisibility(View.INVISIBLE);
-        menub7.setVisibility(View.INVISIBLE);
-        menub8.setVisibility(View.INVISIBLE);
-        menub9.setVisibility(View.INVISIBLE);
+        menuFrame.setVisibility(View.GONE);
+        menub1.setVisibility(View.GONE);
+        menub2.setVisibility(View.GONE);
+        menub3.setVisibility(View.GONE);
+        menub4.setVisibility(View.GONE);
+        menub5.setVisibility(View.GONE);
+        menub6.setVisibility(View.GONE);
+        menub7.setVisibility(View.GONE);
+        menub8.setVisibility(View.GONE);
+        menub9.setVisibility(View.GONE);
     } else{
         menuFrame.setVisibility(View.VISIBLE);
         menub1.setVisibility(View.VISIBLE);
@@ -199,18 +212,42 @@ public void menuOnOff(final boolean boolMenuOff){
     public void drawFood() {
         for (int i = 0; i < foods.size(); i++) {
             MainFood currFood = foods.get(i);
-            currFood.update();
+            currFood.move();
             currFood.draw();
             currFood.fall();
         }
     }
-    public void collision(Remi rem){
-        for (int i = 0; i < foods.size(); i++) {
-            MainFood currFood = foods.get(i);
-        if (rem.collision(currFood) == true) {
+    /*
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        switch(event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN :
+            {
+                parms = (RelativeLayout.LayoutParams) brush.getLayoutParams();
+                par = (LinearLayout.LayoutParams) getWindow().findViewById(Window.ID_ANDROID_CONTENT).getLayoutParams();
+                dx = event.getRawX() - parms.leftMargin;
+                dy = event.getRawY() - parms.topMargin;
+            }
+            break;
+            case MotionEvent.ACTION_MOVE :
+            {
+                x2 = event.getRawX();
+                y2 = event.getRawY();
+                parms.leftMargin = (int) (x-dx);
+                parms.topMargin = (int) (y - dy);
+                brush.setLayoutParams(parms);
+            }
+            break;
+            case MotionEvent.ACTION_UP :
+            {
 
-        }}
+            }
+            break;
+        }
+        return true;
     }
+*/
 
     @Override
     public void onClick(View v) {
@@ -260,9 +297,115 @@ public void menuOnOff(final boolean boolMenuOff){
                menuOff = true;
                menuOnOff(menuOff);
                break;
-           default:
+
+            default:
                break;
 
        }
     }
+
+
+    public void optionsOnOff(){
+        loveButton.setVisibility(View.GONE);
+        feedButton.setVisibility(View.GONE);
+        brushButton.setVisibility(View.GONE);
+    }
+    private float xb, yb;
+    private int mx, my;
+
+    public void brushStarts(){
+    brush.setVisibility(View.VISIBLE);
+    brush.setOnTouchListener(new View.OnTouchListener()
+    {
+        public boolean onTouch(View v, MotionEvent event)
+        {
+                switch(event.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        xb = event.getX();
+                        yb = event.getY();
+                    case MotionEvent.ACTION_MOVE:
+                        mx = (int)(event.getRawX() - xb);
+                        my = (int)(event.getRawY() -200 - yb);
+                        brush.setX(mx);
+                        brush.setY(my);
+
+                        break;
+                }
+                return true;
+            }});
+    if (((Math.abs(remi.xPos - brush.getX()) < (int) ((brush.getWidth()/ 2) + remiButton.getWidth())) &&
+                (Math.abs(remi.yPos - brush.getY()) < (int) ((brush.getHeight()/ 2)+remiButton.getWidth())))){
+
+       // scoreButton.setBackgroundColor(222);
+    }
+    }
+
+    public void foodStarts(){
+        createFood();
+        for (int i = 0; i<foods.size(); i++) {
+            final MainFood currFood = foods.get(i);
+            final int j = i;
+            currFood.move();
+            currFood.food_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    currFood.fall();
+                    hit = remi.collision(currFood);
+                    if (hit){
+                        score.updateScore(10);
+                        score.drawScore();
+                        currFood.removeFood(foods,j);
+
+                    }
+                    if (currFood.currYPos> 699){
+                        currFood.removeFood(foods,j);
+                    }
+                }
+            });
+
+        }
+    }
+    public void loveStarts(){
+        hand.setVisibility(View.VISIBLE);
+        hand.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View v, MotionEvent event)
+            {
+                switch(event.getAction())
+                {
+                    case MotionEvent.ACTION_DOWN :
+                    {
+                        parms = (RelativeLayout.LayoutParams) brush.getLayoutParams();
+                        par = (LinearLayout.LayoutParams) getWindow().findViewById(Window.ID_ANDROID_CONTENT).getLayoutParams();
+                        dx = event.getRawX() - parms.leftMargin;
+                        dy = event.getRawY() - parms.topMargin;
+                    }
+                    break;
+                    case MotionEvent.ACTION_MOVE :
+                    {
+                        x2 = event.getRawX();
+                        y2 = event.getRawY();
+                        parms.leftMargin = (int) (x-dx);
+                        parms.topMargin = (int) (y - dy);
+                        brush.setLayoutParams(parms);
+                    }
+                    break;
+                    case MotionEvent.ACTION_UP :
+                    {
+
+                    }
+                    break;
+                }
+                return true;
+            }
+        });
+    }
+    public void shine(){
+
+    }
+
+
+
 }

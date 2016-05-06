@@ -32,6 +32,7 @@
             android:layout_marginTop="70dp"
             android:adjustViewBounds="true"
             android:clickable="true"
+            android:visibility="gone"
             android:tag="2" />
 
         <ImageButton
@@ -43,6 +44,7 @@
             android:layout_marginTop="70dp"
             android:adjustViewBounds="true"
             android:clickable="true"
+            android:visibility="gone"
             android:tag="2" />
 
         <ImageButton
@@ -54,6 +56,7 @@
             android:layout_marginTop="70dp"
             android:adjustViewBounds="true"
             android:clickable="true"
+            android:visibility="gone"
             android:tag="2" />
 
         <ImageButton
@@ -65,6 +68,7 @@
             android:layout_marginTop="70dp"
             android:adjustViewBounds="true"
             android:clickable="true"
+            android:visibility="gone"
             android:tag="2" />
 
 
@@ -116,6 +120,41 @@
             android:layout_marginTop="450dp"
             android:backgroundTint="#B1EA8C"
             android:clickable="false" />
+
+        <!--options-->
+        <ImageButton
+            android:id="@+id/feedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/feed"
+            android:clickable="true" />
+        <ImageButton
+            android:id="@+id/brushButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/brush"
+            android:clickable="true" />
+        <ImageButton
+            android:id="@+id/loveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="240dp"
+            android:layout_marginTop="90dp"
+            android:background="@drawable/love"
+            android:clickable="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/brush"
+            android:background="@drawable/brushback"
+            android:visibility="gone"
+            />
+
         <!---MENU-->
         <FrameLayout
             android:id="@+id/frameLayout2"
@@ -123,7 +162,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="-10dp"
             android:background="@drawable/menubg"
-            android:visibility="invisible"
+            android:visibility="gone"
 
             >
 
@@ -134,7 +173,7 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="45dp"
                 android:background="@drawable/nope"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menu_button2"
@@ -161,7 +200,7 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="160dp"
                 android:background="@drawable/collar2"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menu_button5"
@@ -170,7 +209,7 @@
                 android:layout_marginLeft="123dp"
                 android:layout_marginTop="160dp"
                 android:background="@drawable/collar1"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menu_button6"
@@ -179,7 +218,7 @@
                 android:layout_marginLeft="224dp"
                 android:layout_marginTop="160dp"
                 android:background="@drawable/bandana4"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menu_button7"
@@ -188,7 +227,7 @@
                 android:layout_marginLeft="18dp"
                 android:layout_marginTop="270dp"
                 android:background="@drawable/bandana2"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menu_button8"
@@ -197,7 +236,7 @@
                 android:layout_marginLeft="123dp"
                 android:layout_marginTop="270dp"
                 android:background="@drawable/bandana1"
-                android:visibility="invisible" />
+                android:visibility="gone" />
 
             <ImageButton
                 android:id="@+id/menu_button9"
@@ -206,7 +245,7 @@
                 android:layout_marginLeft="224dp"
                 android:layout_marginTop="270dp"
                 android:background="@drawable/bandana3"
-                android:visibility="invisible" />
+                android:visibility="gone" />
         </FrameLayout>
     </FrameLayout>
 </RelativeLayout>

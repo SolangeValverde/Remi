@@ -39,18 +39,18 @@ public class MainFood {
     public void removeFood(ArrayList foods, int i){
         foods.remove(foods.get(i));
     }
-
+/*
     public void move2() {
         TranslateAnimation animation = new TranslateAnimation(xPos, xFinal,
                 yPos, yPos);          //  new TranslateAnimation(xFrom,xTo, yFrom,yTo)
-        animation.setDuration(7000);  // animation duration
+        animation.setDuration(7000);  // animatranslateYAnimationtion duration
         animation.setRepeatMode(1);   // repeat animation (left to right, right to left )
        // if (xPos < -21 || xPos > 900) {
             animation.setFillAfter(true);
               //  }
         food_button.startAnimation(animation);  // start animation
     }
-
+*/
     public void move(){
         ObjectAnimator translateXAnimation= ObjectAnimator.ofFloat(food_button, "translationX", xPos, xFinal);
         ObjectAnimator translateYAnimation= ObjectAnimator.ofFloat(food_button, "translationY", yPos, yPos);
@@ -100,7 +100,7 @@ public class MainFood {
         });
 
     }
-
+/*
     public void fall2() {
         yFinal = 700;
         TranslateAnimation animation2 = new TranslateAnimation(currXPos, currXPos,
@@ -112,7 +112,7 @@ public class MainFood {
         food_button.startAnimation(animation2);  // start animation
         //yPos = yFinal;
     }
-
+*/
 
 
     public void draw() {

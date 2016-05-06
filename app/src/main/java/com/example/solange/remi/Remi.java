@@ -2,6 +2,7 @@ package com.example.solange.remi;
 
 import android.app.Activity;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 /**
  * Created by Solange on 25/04/2016.
@@ -24,7 +25,10 @@ public class Remi {
         return ((Math.abs(xPos - other.currXPos) < (int) ((other.food_button.getWidth()/ 2))) &&
                 (Math.abs(yPos - other.currYPos) < (int) ((other.food_button.getHeight()/ 2))));
     }
-
+    boolean collisionBrush(ImageView other) {
+        return ((Math.abs(xPos - other.getX()) < (int) ((other.getWidth()/ 2))) &&
+                (Math.abs(yPos - other.getY()) < (int) ((other.getHeight()/ 2))));
+    }
     public void draw() {
         remi_button.setX(xPos);
         remi_button.setY(yPos);
